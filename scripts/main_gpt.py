@@ -26,7 +26,7 @@ from pygments import highlight
 from pygments.lexers import PythonLexer
 from pygments.formatters import TerminalFormatter
 from Units.gpt import ENV_API
-openai.api_key = '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'
+openai.api_key = os.getenv('OPENAI_API_KEY')
 os.environ['HTTP_PROXY'] = os.environ['http_proxy'] = "http://127.0.0.1:7890"  
 os.environ['HTTPS_PROXY'] = os.environ['https_proxy'] = 'http://127.0.0.1:7890'  
 model_name = 'gpt-3.5-turbo' # 'text-davinci-002'
@@ -421,12 +421,17 @@ say(f'No problem!')
 target_pos = [0.0, 0.0, 0.0, 10.0, 0.0, 0.0]
 move_to_pos(target_pos)
 objects = ['person in red', 'person in blue', 'person in pink', 'person with umbrella', 'white car', 'green van',  'person in yellow' ]
+# turn left 30 degree.
+say(f'No problem!')
+target_pos = [0.0, 0.0, 0.0, 30.0, 0.0, 0.0]
+move_to_pos(target_pos)
+objects = ['person in red', 'person in blue', 'person in pink', 'person with umbrella', 'white car', 'green van',  'person in yellow' ]
 # turn 30 degrees to the left
 say(f'No problem!')
 target_pos = [0.0, 0.0, 0.0, 30.0, 0.0, 0.0]
 move_to_pos(target_pos)
 objects = ['person in red', 'person in blue', 'person in pink', 'person with umbrella', 'white car', 'green van',  'person in yellow' ]
-# turn 30 degrees to the right
+# turn right30 degrees
 say(f'No problem!')
 target_pos = [0.0, 0.0, 0.0, - 30.0, 0.0, 0.0]
 move_to_pos(target_pos)
