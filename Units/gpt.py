@@ -35,7 +35,7 @@ class ENV_API:
         # take off
         rospy.set_param("X",0)
         rospy.set_param("Y",0.0)
-        rospy.set_param("Z",10.0)
+        rospy.set_param("Z",8.0)
         rospy.set_param("z",1.0)
     def run(self):
         rospy.spin()
@@ -43,6 +43,7 @@ class ENV_API:
         self.ego_position = ego_position
         self.got_ego_pose = True
     def save_object_position(self, message):
+        # print(message.name)
         for name in message.name:
             if name =='law_office':
                 object_index = message.name.index(name)
@@ -68,6 +69,18 @@ class ENV_API:
                 object_index = message.name.index(name)
                 object_pose = message.pose[object_index]
                 self.object_position.update({'walking person in white': object_pose})
+            elif name =='car_beetle':
+                object_index = message.name.index(name)
+                object_pose = message.pose[object_index]
+                self.object_position.update({'yellow car': object_pose})
+            elif name =='car_golf':
+                object_index = message.name.index(name)
+                object_pose = message.pose[object_index]
+                self.object_position.update({'blue car': object_pose})
+            elif name =='ambulance':
+                object_index = message.name.index(name)
+                object_pose = message.pose[object_index]
+                self.object_position.update({'ambulance': object_pose})
 
         # self.object_position.update({'object name':obj_position})
     def get_obj_pos(self, name):
@@ -89,7 +102,7 @@ class ENV_API:
         return [0,0,0,0,0,0]
 
     def get_obj_names(self):
-        return ['law office', 'green tree', 'salon', 'black suv', 'standing person in white', 'walking person in white']
+        return ['law office', 'green tree', 'salon', 'black suv', 'standing person in white', 'walking person in white','yellow car','blue car','ambulance']
 
     def is_obj_visible(self,name):
         return True or False
